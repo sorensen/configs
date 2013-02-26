@@ -1,0 +1,9 @@
+{
+  "some": {
+    "hey": "there"
+  , "nested": {
+      "foo": "bar"
+    }
+  }
+, "debug": false
+}

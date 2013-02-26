@@ -1,0 +1,13 @@
+{
+  "dev": true
+, "database": {
+    "host": "db.somehost.net"
+  , "user": "coffee"
+  }
+, "some": {
+    "nested": {
+      "thing": "hi"
+    }
+  }
+, "debug": true
+}

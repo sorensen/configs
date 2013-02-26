@@ -1,0 +1,19 @@
+{
+  "debug": true
+, "something": "else"
+, "database": {
+    "host": "localhost"
+  , "port": "3306"
+  }
+, "dev": {
+    "database": {
+      "host": "dev.domain.net"
+    }
+  }
+, "production": {
+    "debug": false
+  , "database": {
+      "host": "prod.domain.net"
+    }
+  }
+}
