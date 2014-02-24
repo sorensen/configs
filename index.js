@@ -16,6 +16,8 @@ var fs = require('fs')
   , info = getInfo(base) || {}
   , configPath = getPath()
   , loaded = []
+  , dirPattern = ['default', env, 'local']
+  , filePattern = ['', env, 'local']
 
 /**
  * Recursive extend for overriding nested properties
@@ -43,6 +45,14 @@ function extend(obj, source) {
  */
 
 function getParent() {
+  if (!!~__dirname.indexOf('node_modules')) {
+    var dir = module.id
+
+    while (path.basename(dir) !== 'node_modules') {
+      dir = path.dirname(dir)
+    }
+    return path.dirname(dir)
+  }
   var dir = module
     , ok = false
 
@@ -97,20 +107,14 @@ info.version && (config.version = info.version)
 // Check for directory based config
 if (exists(configPath)) {
   exts.forEach(function(ext) {
-    [ 'default'
-    , env
-    , 'local'
-    ].forEach(function(type) {
+    dirPattern.forEach(function(type) {
       pathExtend(path.join(configPath, type + ext))
     })
   })
 } else {
   // Look for file based config
   exts.forEach(function(ext) {
-    [ ''
-    , env
-    , 'local'
-    ].forEach(function(type) {
+    filePattern.forEach(function(type) {
       type = type ? '.' + type : type
       pathExtend(path.join(base, 'config' + type + ext))
     })
