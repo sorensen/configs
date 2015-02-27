@@ -61,6 +61,7 @@ function pathExtend(p) {
 
 // Check for a `package.json` file for version
 info.version && (config.version = info.version)
+info.name && (config.name = info.name)
 
 // Check for directory based config
 if (exists(configPath)) {

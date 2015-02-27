@@ -2,6 +2,7 @@
 
 
 var assert = require('assert')
+  , info = require('./package.json')
 
 describe('Configs', function() {
   it('should have an exact config', function() {
@@ -13,7 +14,8 @@ describe('Configs', function() {
 
     assert(typeof config, 'object')
     assert.deepEqual(config, {
-      "version": "0.0.2",
+      "version": info.version,
+      "name": info.name,
       "test": "one",
       "database": {
         "host": "db.somehost.net",
@@ -39,7 +41,8 @@ describe('Configs', function() {
 
     assert(typeof config, 'object')
     assert.deepEqual(config, {
-      "version": "0.0.2",
+      "version": info.version,
+      "name": info.name,
       "jsconfig": true,
       "test": "one",
       "database": {
