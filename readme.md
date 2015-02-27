@@ -3,6 +3,8 @@ Configs
 =======
 
 [![Build Status](https://secure.travis-ci.org/sorensen/configs.png)](http://travis-ci.org/sorensen/configs) 
+[![devDependency Status](https://david-dm.org/sorensen/configs.png)](https://david-dm.org/sorensen/configs#info=dependencies)
+[![NPM version](https://badge.fury.io/js/configs.png)](http://badge.fury.io/js/configs)
 
 Zero configuration config module. Simply require the module and your project's
 config files will be loaded and merged together.
