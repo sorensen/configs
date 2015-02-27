@@ -5,6 +5,7 @@
  */
 
 var fs = require('fs')
+  , extend = require('deep-extend')
   , exists = fs.existsSync
   , path = require('path')
   , env = process.env.NODE_ENV
@@ -12,56 +13,13 @@ var fs = require('fs')
   , infoPath
   , config = {}
   , exts = ['.js', '.json']
-  , base = getParent()
+  , base = require('parent-dir')
   , info = getInfo(base) || {}
   , configPath = getPath()
   , loaded = []
   , dirPattern = ['default', env, 'local']
   , filePattern = ['', env, 'local']
-
-/**
- * Recursive extend for overriding nested properties
- *
- * @param {Object} destination
- * @param {Object} source
- * @returns {Object} combined result
- */
-
-function extend(obj, source) {
-  for (var prop in source) {
-    var val = source[prop]
-    obj[prop] = obj[prop] || {}
-    obj[prop] = toString.call(val) === '[object Object]' && val !== null
-      ? extend(obj[prop], val)
-      : val
-  }
-  return obj
-}
-
-/**
- * Find the parent app directory
- *
- * @returns {String} directory
- */
-
-function getParent() {
-  if (!!~__dirname.indexOf('node_modules')) {
-    var dir = module.id
-
-    while (path.basename(dir) !== 'node_modules') {
-      dir = path.dirname(dir)
-    }
-    return path.dirname(dir)
-  }
-  var dir = module
-    , ok = false
-
-  while (dir.parent && !ok) {
-    dir = dir.parent
-    ok = getInfo(path.dirname(dir.filename))
-  }
-  return path.dirname(dir.filename)
-}
+  , debug = require('debug')('configs')
 
 /**
  * Find and load the `package.json` of the parent
@@ -127,9 +85,7 @@ if (loaded.length === 1 && config[env]) {
 }
 
 // Check for `debug` prop and report loaded config files
-if (config.debug) {
-  console.log('Config loaded: [' + loaded.join(', ') + ']')
-}
+debug('loaded: [' + loaded.join(', ') + ']')
 
 /*!
  * Module exports.
