@@ -2,7 +2,7 @@
   "author": "Beau Sorensen <mail@beausorensen.com> (http://github.com/sorensen)",
   "name": "configs",
   "description": "Super simple project configuration",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -21,6 +21,6 @@
   "dependencies": {
     "debug": "^2.1.1",
     "deep-extend": "^0.3.2",
-    "parent-dir": "git://github.com/sorensen/parent-dir"
+    "parent-dir": "0.0.2"
   }
 }
