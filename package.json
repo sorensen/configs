@@ -2,7 +2,7 @@
   "author": "Beau Sorensen <mail@beausorensen.com> (http://github.com/sorensen)",
   "name": "configs",
   "description": "Super simple project configuration",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -16,11 +16,11 @@
     "test": "./node_modules/mocha/bin/mocha -R spec test.js"
   },
   "devDependencies": {
-    "mocha": "~1.8.1"
+    "mocha": "1.8.1"
   },
   "dependencies": {
-    "debug": "^2.1.1",
-    "deep-extend": "^0.3.2",
-    "parent-dir": "0.0.2"
+    "debug": "2.1.1",
+    "deep-extend": "0.3.2",
+    "parent-dir": "0.0.3"
   }
 }
